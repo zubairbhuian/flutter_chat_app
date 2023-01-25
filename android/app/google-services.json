@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "257026834758",
+    "project_id": "fir-chat-app-d7654",
+    "storage_bucket": "fir-chat-app-d7654.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257026834758:android:085daecd20e06c0cb0e547",
+        "android_client_info": {
+          "package_name": "com.example.flutter_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257026834758-rpp1laspkrhnuield9rs48hc4n8585jb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQxhu2Gj8TLAcvmDdWJdIqbqSX1m2BXDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257026834758-rpp1laspkrhnuield9rs48hc4n8585jb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
