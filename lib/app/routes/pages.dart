@@ -9,9 +9,10 @@ class AppPages {
   static const Application = AppRoutes.Application;
   // static const INITIAL = AppRoutes.INITIAL;
   // static const INITIAL = AppRoutes.INITIAL;
-  static final List<GetPage> routes= [
-    GetPage(name: AppRoutes.INITIAL, page:()=> WelcomePage(),binding: WelcomeBinding())
+  static final List<GetPage> routes = [
+    GetPage(
+        name: AppRoutes.INITIAL,
+        page: () => const WelcomePage(),
+        binding: WelcomeBinding())
   ];
-
-
 }
