@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../pages/welcome/binding.dart';
-import '../../pages/welcome/view.dart';
+import '../../pages/welcome/index.dart';
+import '../../pages/sign_in/index.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -13,6 +13,10 @@ class AppPages {
     GetPage(
         name: AppRoutes.INITIAL,
         page: () => const WelcomePage(),
-        binding: WelcomeBinding())
+        binding: WelcomeBinding()),
+    GetPage(
+        name: AppRoutes.SIGN_IN,
+        page: () => const SignInPage(),
+        binding: SignInBinding()),
   ];
 }
