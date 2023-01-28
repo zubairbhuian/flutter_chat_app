@@ -10,9 +10,9 @@ import 'app/store/storage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync<StorageService>(() => StorageService().init());
+  Get.put<ConfigStore>(ConfigStore());
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  Get.put(ConfigStore());
-  Get.put(StorageService());
   runApp(const MyApp());
 }
 

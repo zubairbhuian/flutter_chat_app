@@ -8,9 +8,14 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Center(
-      child: Text("Sign In"),
+      child: Center(
+          child: ElevatedButton(
+              onPressed: () {
+                controller.handleSignIn();
+              },
+              child: const Text("Sign In With Google"))),
     ));
   }
 }

@@ -1,0 +1,3 @@
+ String  STORAGE_USER_TOKEN_KEY = '';
+ String STORAGE_DEVICE_FIRST_OPEN_KEY ='';
+ 

@@ -43,6 +43,7 @@ dependencies:
   firebase_auth: ^4.2.5
   google_sign_in: ^5.4.3
   firebase_database: ^10.0.9
+  cloud_firestore: ^4.3.1
   # media query
   flutter_screenutil: ^5.6.0
   # dots indicator
@@ -51,6 +52,8 @@ dependencies:
   fluttertoast: ^8.1.2
   # store
   shared_preferences: ^2.0.17
+  # info
+  package_info_plus: ^3.0.2
 
   
 
