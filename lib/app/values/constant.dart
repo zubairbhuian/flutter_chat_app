@@ -1,3 +1,2 @@
- String  STORAGE_USER_TOKEN_KEY = '';
- String STORAGE_DEVICE_FIRST_OPEN_KEY ='';
- 
+var STORAGE_USER_TOKEN_KEY = 'storage_user_token_key';
+var STORAGE_DEVICE_FIRST_OPEN_KEY = 'storage_device_first_open_key';

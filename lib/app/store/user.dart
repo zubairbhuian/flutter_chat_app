@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
-
 import 'package:flutter_chat_app/app/entities/user.dart';
 import 'package:flutter_chat_app/app/store/storage.dart';
 import 'package:get/get.dart';
@@ -25,7 +23,7 @@ class UserStore extends GetxController {
     var profileOffline = StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
     if (profileOffline.isNotEmpty) {
       _isLogin.value = true;
-      _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
+      // _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
     }
   }
 

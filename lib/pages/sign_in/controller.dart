@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_chat_app/app/routes/app_routes.dart';
 import 'package:flutter_chat_app/app/store/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -16,6 +17,12 @@ class SignInController extends GetxController {
     try {
       var user = await _googleSignIn.signIn();
       if (user != null) {
+          final gAuthentication = await user.authentication;
+        final credential = GoogleAuthProvider.credential(
+            idToken: gAuthentication.idToken,
+            accessToken: gAuthentication.accessToken);
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        
         String displayName = user.displayName ?? user.email;
         String email = user.email;
         String id = user.id;
@@ -56,8 +63,10 @@ class SignInController extends GetxController {
               .add(data);
         }
       }
-      Fluttertoast.showToast(msg: 'Login Success', timeInSecForIosWeb: 4);
+      Fluttertoast.showToast(msg: 'Login Success', timeInSecForIosWeb: 2);
       Get.offAndToNamed(AppRoutes.Application);
-    } catch (e) {}
+    } catch (e) {
+      Fluttertoast.showToast(msg: "Login err", timeInSecForIosWeb: 2);
+    }
   }
 }
