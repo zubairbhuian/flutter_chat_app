@@ -17,12 +17,12 @@ class SignInController extends GetxController {
     try {
       var user = await _googleSignIn.signIn();
       if (user != null) {
-          final gAuthentication = await user.authentication;
+        final gAuthentication = await user.authentication;
         final credential = GoogleAuthProvider.credential(
             idToken: gAuthentication.idToken,
             accessToken: gAuthentication.accessToken);
         await FirebaseAuth.instance.signInWithCredential(credential);
-        
+
         String displayName = user.displayName ?? user.email;
         String email = user.email;
         String id = user.id;
@@ -34,6 +34,7 @@ class SignInController extends GetxController {
         userPrfile.photoUrl = photoUrl;
         // UserStore
         UserStore.to.saveProfile(userPrfile);
+        // print("Corent Ussr :" + "$userPrfile");
         //  Add  db user data
         var userDatabase = await db
             .collection("users")
@@ -66,6 +67,7 @@ class SignInController extends GetxController {
       Fluttertoast.showToast(msg: 'Login Success', timeInSecForIosWeb: 2);
       Get.offAndToNamed(AppRoutes.Application);
     } catch (e) {
+      print(e);
       Fluttertoast.showToast(msg: "Login err", timeInSecForIosWeb: 2);
     }
   }

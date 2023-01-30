@@ -25,6 +25,7 @@ class UserStore extends GetxController {
       _isLogin.value = true;
       // _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
     }
+    print("Offline Profile :"+"${StorageService.to.getString(STORAGE_USER_TOKEN_KEY)}");
   }
 
   // set Token

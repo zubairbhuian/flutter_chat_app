@@ -1,3 +1,4 @@
+import 'package:flutter_chat_app/app/middlewares/router_welcome.dart';
 import 'package:get/get.dart';
 
 import '../../pages/welcome/index.dart';
@@ -16,7 +17,13 @@ class AppPages {
     GetPage(
         name: AppRoutes.INITIAL,
         page: () => const WelcomePage(),
-        binding: WelcomeBinding()),
+        binding: WelcomeBinding(),
+        middlewares: [
+          RouteWlcomMiddleware(priority: 1)
+        ] 
+        
+         ),
+        
     GetPage(
         name: AppRoutes.SIGN_IN,
         page: () => const SignInPage(),
