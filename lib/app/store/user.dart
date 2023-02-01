@@ -20,12 +20,11 @@ class UserStore extends GetxController {
   void onInit() {
     super.onInit();
     token = StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
-    var profileOffline = StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
+    var profileOffline = StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
     if (profileOffline.isNotEmpty) {
       _isLogin.value = true;
-      // _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
+      _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
     }
-    print("Offline Profile :"+"${StorageService.to.getString(STORAGE_USER_TOKEN_KEY)}");
   }
 
   // set Token
@@ -37,13 +36,13 @@ class UserStore extends GetxController {
   // save Profile
   Future<String> getProfile() async {
     if (token.isEmpty) return "";
-    return StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
+    return StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
   }
 
   // save Profile
   Future<void> saveProfile(UserLoginResponseEntity profile) async {
     _isLogin.value = true;
-    StorageService.to.setString(STORAGE_USER_TOKEN_KEY, jsonEncode(profile));
+    StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
     setToken(profile.accessToken!);
   }
 }

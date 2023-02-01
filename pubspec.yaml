@@ -54,7 +54,10 @@ dependencies:
   shared_preferences: ^2.0.17
   # info
   package_info_plus: ^3.0.2
-
+  # bottom nav bar
+  animated_bottom_navigation_bar: ^1.1.0+1
+  # cached network image
+  cached_network_image: ^3.2.3
   
 
 dev_dependencies:

@@ -8,12 +8,14 @@ import 'package:get/get.dart';
 
 import 'app/store/config.dart';
 import 'app/store/storage.dart';
+import 'pages/contact/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<ConfigStore>(ConfigStore());
   Get.put<UserStore>(UserStore());
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }

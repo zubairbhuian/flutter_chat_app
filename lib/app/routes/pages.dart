@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../pages/welcome/index.dart';
 import '../../pages/sign_in/index.dart';
 import '../../pages/application/index.dart';
+import '../../pages/contact/index.dart';
 
 import 'app_routes.dart';
 
@@ -32,5 +33,9 @@ class AppPages {
         name: AppRoutes.Application,
         page: () => const ApplicationPage(),
         binding: ApplicationBinding()),
+        GetPage(
+        name: AppRoutes.Contact,
+        page: () => const ContactPage(),
+        binding: ContactBinding()),
   ];
 }
