@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_app/pages/contact/controller.dart';
-import 'package:flutter_chat_app/pages/contact/widgets/contact_list.dart';
 import 'package:get/get.dart';
 
-class ContactPage extends GetView<ContactController> {
-  const ContactPage({super.key});
+import 'controller.dart';
+
+class ChatPage extends GetView<ChatController> {
+  const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ContactPage extends GetView<ContactController> {
         backgroundColor: Colors.white,
         title: const Text('Contact'),
       ),
-      body: ContactList()
+      body: Text('chat')
     );
   }
 }

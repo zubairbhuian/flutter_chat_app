@@ -5,6 +5,7 @@ import '../../pages/welcome/index.dart';
 import '../../pages/sign_in/index.dart';
 import '../../pages/application/index.dart';
 import '../../pages/contact/index.dart';
+import '../../pages/chat/index.dart';
 
 import 'app_routes.dart';
 
@@ -37,5 +38,9 @@ class AppPages {
         name: AppRoutes.Contact,
         page: () => const ContactPage(),
         binding: ContactBinding()),
+          GetPage(
+        name: AppRoutes.Chat,
+        page: () => const ChatPage(),
+        binding: ChatBinding()),
   ];
 }

@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 
 import 'app/store/config.dart';
 import 'app/store/storage.dart';
-import 'pages/contact/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
