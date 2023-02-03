@@ -17,6 +17,7 @@ class ContactController extends GetxController {
   asyncLoadAllData() async {
     var userBase = await db
         .collection("users")
+        .where("id", isNotEqualTo: token)
         .withConverter(
             fromFirestore: UserData.fromFirestore,
             toFirestore: (UserData userData, options) => userData.toFirestore())
@@ -24,42 +25,42 @@ class ContactController extends GetxController {
 
     for (var doc in userBase.docs) {
       state.contactList.add(doc.data());
-      print(doc.toString());
     }
   }
 
-  goChat(UserData to_userdata) async {
-    var from_message = await db
+  goChat(UserData toUserdata) async {
+    var fromMessage = await db
         .collection("message")
         .withConverter(
             fromFirestore: Msg.fromFirestore,
             toFirestore: (Msg msg, options) => msg.toFirestore())
         .where("to_uid", isEqualTo: token)
-        .where("to_uid", isEqualTo: to_userdata.id)
+        .where("to_uid", isEqualTo: toUserdata.id)
         .get();
 
-    var to_message = await db
+    var toMessage = await db
         .collection("message")
         .withConverter(
             fromFirestore: Msg.fromFirestore,
             toFirestore: (Msg msg, options) => msg.toFirestore())
-        .where("from_uid", isEqualTo: to_userdata.id)
+        .where("from_uid", isEqualTo: toUserdata.id)
         .where("to_uid", isEqualTo: token)
         .get();
-    if (from_message.docs.isEmpty && to_message.docs.isEmpty) {
+    if (fromMessage.docs.isEmpty && toMessage.docs.isEmpty) {
       String profile = await UserStore.to.getProfile();
       UserLoginResponseEntity userdata =
           UserLoginResponseEntity.fromJson(jsonDecode(profile));
       var msgdata = Msg(
           from_uid: userdata.accessToken,
-          to_uid: to_userdata.id,
+          to_uid: toUserdata.id,
           from_name: userdata.displayName,
-          to_name: to_userdata.name,
+          to_name: toUserdata.name,
           from_avatar: userdata.photoUrl,
-          to_avatar: to_userdata.photourl,
+          to_avatar: toUserdata.photourl,
           last_msg: "",
           last_time: Timestamp.now(),
           msg_num: 0);
+      print("Demo");
       db
           .collection("message")
           .withConverter(
@@ -69,26 +70,26 @@ class ContactController extends GetxController {
           .then((value) {
         Get.toNamed("/chat", parameters: {
           "doc_id": value.id,
-          "to_uid": to_userdata.id ?? "",
-          "to_name": to_userdata.name ?? "",
-          "to_avatar": to_userdata.photourl ?? ""
+          "to_uid": toUserdata.id ?? "",
+          "to_name": toUserdata.name ?? "",
+          "to_avatar": toUserdata.photourl ?? ""
         });
       });
     } else {
-      if (from_message.docs.isNotEmpty) {
+      if (fromMessage.docs.isNotEmpty) {
         Get.toNamed("/chat", parameters: {
-          "doc_id": from_message.docs.first.id,
-          "to_uid": to_userdata.id ?? "",
-          "to_name": to_userdata.name ?? "",
-          "to_avatar": to_userdata.photourl ?? ""
+          "doc_id": fromMessage.docs.first.id,
+          "to_uid": toUserdata.id ?? "",
+          "to_name": toUserdata.name ?? "",
+          "to_avatar": toUserdata.photourl ?? ""
         });
       }
-      if (to_message.docs.isNotEmpty) {
+      if (toMessage.docs.isNotEmpty) {
         Get.toNamed("/chat", parameters: {
-          "doc_id": to_message.docs.first.id,
-          "to_uid": to_userdata.id ?? "",
-          "to_name": to_userdata.name ?? "",
-          "to_avatar": to_userdata.photourl ?? ""
+          "doc_id": toMessage.docs.first.id,
+          "to_uid": toUserdata.id ?? "",
+          "to_name": toUserdata.name ?? "",
+          "to_avatar": toUserdata.photourl ?? ""
         });
       }
     }

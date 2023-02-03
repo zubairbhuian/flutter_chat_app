@@ -9,23 +9,29 @@ class ContactPage extends GetView<ContactController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        toolbarHeight: 70,
-        flexibleSpace: Container(
-          // height: 108,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Color.fromARGB(255, 122, 15, 244),
-              Color.fromARGB(255, 133, 2, 227)
-            ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+        appBar: AppBar(
+          centerTitle: true,
+          toolbarHeight: 70,
+          flexibleSpace: Container(
+            // height: 108,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Color.fromARGB(255, 122, 15, 244),
+                Color.fromARGB(255, 133, 2, 227)
+              ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+            ),
           ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          title: const Text('Contact'),
+          actions: [
+            ElevatedButton(
+                onPressed: () {
+                  Get.toNamed("/chat");
+                },
+                child: const Text("Next"))
+          ],
         ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text('Contact'),
-      ),
-      body: ContactList()
-    );
+        body: const ContactList());
   }
 }
