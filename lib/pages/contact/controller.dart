@@ -100,5 +100,6 @@ class ContactController extends GetxController {
     asyncLoadAllData();
     // TODO: implement onReady
     super.onReady();
+    
   }
 }

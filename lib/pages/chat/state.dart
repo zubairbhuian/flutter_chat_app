@@ -1,7 +1,10 @@
-import 'package:flutter_chat_app/app/entities/user.dart';
+import 'package:flutter_chat_app/app/entities/msgcontent.dart';
 import 'package:get/get.dart';
 
 class ChatState {
-  var index = 0.obs;
-  var contactList =<UserData>[].obs;
+  RxList<MsgContent> msgcontentList = <MsgContent>[].obs;
+  var to_uid = "".obs;
+  var to_name = "".obs;
+  var to_avatar = "".obs;
+  var to_location = "unknon".obs;
 }
